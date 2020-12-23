@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "05590834140b959415effe99d7067032",
+    "packages": [
+        {
+            "name": "zawntech/wp-admin-options",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zawntech/wp-admin-options.git",
+                "reference": "a3f9451b5a40ad43a6de6faedd4fa1f3bc713747"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zawntech/wp-admin-options/zipball/a3f9451b5a40ad43a6de6faedd4fa1f3bc713747",
+                "reference": "a3f9451b5a40ad43a6de6faedd4fa1f3bc713747",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zawntech\\WPAdminOptions\\": "src/"
+                }
+            },
+            "license": [
+                "GPLv2"
+            ],
+            "authors": [
+                {
+                    "name": "Marty Eason",
+                    "email": "meason@zawntech.com"
+                }
+            ],
+            "description": "A library of custom WordPress admin option classes.",
+            "support": {
+                "source": "https://github.com/zawntech/wp-admin-options/tree/master",
+                "issues": "https://github.com/zawntech/wp-admin-options/issues"
+            },
+            "time": "2020-12-13T16:21:12+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "zawntech/wp-admin-options": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

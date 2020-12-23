@@ -1,0 +1,15 @@
+{
+    "plugin_name": "Conditional Assets",
+    "plugin_description": "Allows custom CSS and JS based on conditional rules.",
+    "plugin_url": "https:\/\/zawntech.com",
+    "plugin_author": "Zawntech",
+    "plugin_author_url": "https:\/\/zawntech.com",
+    "plugin_text_domain": "conditional-assets",
+    "plugin_namespace": "ConditionalAssets",
+    "plugin_constants_prefix": "CONDITIONAL_ASSETS_",
+    "plugin_main_class": "ConditionalAssets",
+    "plugin_filter_prefix": "conditional_assets_",
+    "composer_package_name": "zawntech\/conditional-assets-plugin",
+    "composer_author_name": "Marty Eason",
+    "composer_author_email": "dev@zawntech.com"
+}

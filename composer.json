@@ -1,0 +1,25 @@
+{
+  "name": "zawntech/conditional-assets-plugin",
+  "description": "Allows custom CSS and JS based on conditional rules.",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Marty Eason",
+      "email": "dev@zawntech.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:zawntech/wp-admin-options.git"
+    }
+  ],
+  "require": {
+    "zawntech/wp-admin-options": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "ConditionalAssets\\": "src/"
+    }
+  }
+}
