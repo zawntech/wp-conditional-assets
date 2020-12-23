@@ -55,6 +55,28 @@ class ConditionalAssetOptionsMetaBox
                 'label' => 'URL Parameter',
                 'value' => ConditionalAssets::get_url_parameter_key(),
             ]);
+
+            new SelectOption([
+                'key' => '_inline_css_position',
+                'label' => 'CSS Position',
+                'value' => ConditionalAssets::get_inline_css_position(),
+                'options' => [
+                    '' => 'Select position...',
+                    'head' => 'Head',
+                    'footer' => 'Footer'
+                ]
+            ]);
+
+            new SelectOption([
+                'key' => '_inline_js_position',
+                'label' => 'Javascript Position',
+                'value' => ConditionalAssets::get_inline_js_position(),
+                'options' => [
+                    '' => 'Select position...',
+                    'head' => 'Head',
+                    'footer' => 'Footer'
+                ]
+            ]);
             ?>
             </tbody>
         </table>
@@ -107,17 +129,22 @@ class ConditionalAssetOptionsMetaBox
 
     public function save_post( $post_id ) {
 
+        ConditionalAssetLoader::purge_transients();
+
         // Stringy options
         $keys = [
             '_trigger_type',
             '_url_param_condition',
-            '_url_param_key'
+            '_url_param_key',
+            '_inline_css_position',
+            '_inline_js_position'
         ];
 
         foreach( $keys as $key ) {
             if ( isset( $_POST[$key] ) ) {
                 $value = filter_var( $_POST[$key], FILTER_SANITIZE_STRING );
-                $value = stripslashes( $_POST[$key] );
+                $value = stripslashes( $value );
+                $value = html_entity_decode( $value );
                 update_post_meta( $post_id, $key, $value );
             }
         }

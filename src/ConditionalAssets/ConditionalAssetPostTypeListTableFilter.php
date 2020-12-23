@@ -1,11 +1,12 @@
 <?php
+
 namespace ConditionalAssets\ConditionalAssets;
 
 class ConditionalAssetPostTypeListTableFilter
 {
     public function __construct() {
         $post_types = ['conditional-asset'];
-        foreach( $post_types as $post_type ) {
+        foreach ( $post_types as $post_type ) {
             add_filter( "manage_{$post_type}_posts_columns", [$this, 'columns'] );
             add_filter( "manage_edit-{$post_type}_sortable_columns", [$this, 'sortable_columns'] );
             add_action( "manage_{$post_type}_posts_custom_column", [$this, 'column_content'], 10, 2 );
@@ -18,7 +19,10 @@ class ConditionalAssetPostTypeListTableFilter
     }
 
     public function columns( $columns ) {
-        $columns['_custom_column'] = 'Custom Column';
+        unset( $columns['date'] );
+        $columns['_trigger'] = 'Trigger';
+        $columns['_css'] = 'CSS';
+        $columns['_js'] = 'JS';
         return $columns;
     }
 
@@ -29,14 +33,32 @@ class ConditionalAssetPostTypeListTableFilter
 
     public function column_content( $column_name, $post_id ) {
         switch ( $column_name ) {
-            case '_custom_column':
-                // Do something...
+
+            case '_trigger':
+                $trigger = ConditionalAssets::get_trigger_type( $post_id );
+                $trigger_label = TriggerTypes::get_label( $trigger );
+                $param_key = ConditionalAssets::get_url_parameter_key( $post_id );
+                $condition = ConditionalAssets::get_url_parameter_condition( $post_id );
+                printf( '<div>%s = %s</div>', $trigger_label, $param_key );
+                printf( '<div>Condition = %s</div>', $condition );
+                break;
+
+            case '_css':
+                if ( !empty( trim( ConditionalAssets::get_inline_css( $post_id ) ) ) ) {
+                    echo '<span style="color: green;">&check;</span>';
+                }
+                break;
+
+            case '_js':
+                if ( !empty( trim( ConditionalAssets::get_inline_js( $post_id ) ) ) ) {
+                    echo '<span style="color: green;">&check;</span>';
+                }
                 break;
         }
     }
 
     public function orderby( \WP_Query $query ) {
-        if ( ! is_admin() ) {
+        if ( !is_admin() ) {
             return;
         }
 
@@ -56,7 +78,7 @@ class ConditionalAssetPostTypeListTableFilter
         <select name="_meta_key">
             <?php
             $items = [
-                '' => 'Select item...'
+                '' => 'Select item...',
             ];
             foreach ( $items as $id => $title ) {
                 $selected = $_GET['_meta_key'] == $id ? ' selected="selected"' : '';

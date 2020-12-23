@@ -6,8 +6,9 @@ class ConditionalAssetsComponent
     public function __construct() {
         new ConditionalAssetPostType;
         new ConditionalAssetOptionsMetaBox;
-        // new ConditionalAssetPostTypeListTableFilter;
+        new ConditionalAssetPostTypeListTableFilter;
         new CssOptionsMetaBox;
         new JsOptionsMetaBox;
+        new ConditionalAssetLoader;
     }
 }

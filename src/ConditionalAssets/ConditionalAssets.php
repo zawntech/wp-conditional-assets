@@ -65,6 +65,10 @@ class ConditionalAssets
         $post->_trigger_type = static::get_trigger_type( $post->ID );
         $post->_url_param_key = static::get_url_parameter_key( $post->ID );
         $post->_url_param_condition = static::get_url_parameter_condition( $post->ID );
+        $post->_inline_css = static::get_inline_css( $post->ID );
+        $post->_inline_css_position = static::get_inline_css_position( $post->ID );
+        $post->_inline_js = static::get_inline_js( $post->ID );
+        $post->_inline_js_position = static::get_inline_js_position( $post->ID );
 
         return $post;
     }
@@ -94,10 +98,18 @@ class ConditionalAssets
     }
 
     public static function get_inline_css( $post_id = 0 ) {
-        return static::get_meta( '_inline_css', $post_id );
+        return html_entity_decode( static::get_meta( '_inline_css', $post_id ), ENT_QUOTES, 'UTF-8');
     }
 
     public static function get_inline_js( $post_id = 0 ) {
-        return static::get_meta( '_inline_js', $post_id );
+        return html_entity_decode( static::get_meta( '_inline_js', $post_id ), ENT_QUOTES, 'UTF-8');
+    }
+
+    public static function get_inline_js_position( $post_id = 0 ) {
+        return static::get_meta( '_inline_js_position', $post_id );
+    }
+
+    public static function get_inline_css_position( $post_id = 0 ) {
+        return static::get_meta( '_inline_css_position', $post_id );
     }
 }

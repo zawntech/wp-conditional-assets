@@ -6,17 +6,17 @@ namespace ConditionalAssets;
  *
  * This is the main plugin class which instantiates individual plugin components.
  */
-class ConditionalAssets
+class ConditionalAssetsPlugin
 {
     /**
-     * @var ConditionalAssets;
+     * @var ConditionalAssetsPlugin;
      */
     protected static $instance;
 
     /**
      * Returns (and initializes once) an instance of the plugin class.
      *
-     * @return ConditionalAssets
+     * @return ConditionalAssetsPlugin
      */
     public static function get_instance() {
         if ( ! static::$instance ) {

@@ -34,7 +34,7 @@ if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Initialize plugin.
-ConditionalAssets\ConditionalAssets::get_instance();
+ConditionalAssets\ConditionalAssetsPlugin::get_instance();
 
 register_activation_hook( __FILE__, function() {
     $option_key = 'CONDITIONAL_ASSETS_ACTIVATE';
